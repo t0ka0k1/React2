@@ -1,10 +1,23 @@
-import "./styles.css";
+import { useState } from "react";
+import { ColoredMessage } from "./components/ColoredMessage";
 
-export default function App() {
+export const App = () => {
+  // Stateの定義
+  console.log("レンダリング");
+  const [num, setNum] = useState(0);
+
+  // ボタンを押した時にStateをカウントアップ
+  const onClickButton = () => {
+    setNum((prev) => prev + 1);
+  };
+
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox1</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    <>
+      <h1 style={{ color: "red" }}>こんにちは!</h1>
+      <ColoredMessage color="blue">お元気ですか?</ColoredMessage>
+      <ColoredMessage color="pink">元気です!</ColoredMessage>
+      <button onClick={onClickButton}>ボタン</button>
+      <p>{num}</p>
+    </>
   );
-}
+};
